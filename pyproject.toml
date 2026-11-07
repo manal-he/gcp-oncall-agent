@@ -1,0 +1,101 @@
+[build-system]
+requires = ["hatchling>=1.25"]
+build-backend = "hatchling.build"
+
+[project]
+name = "gcp-oncall-agent"
+version = "0.1.0"
+description = "An AI on-call engineer for Google Cloud, built on the Model Context Protocol (MCP) with human-in-the-loop approval and an offline eval suite."
+readme = "README.md"
+license = "MIT"
+license-files = ["LICENSE"]
+requires-python = ">=3.11"
+keywords = ["mcp", "ai-agents", "langgraph", "google-cloud", "sre", "on-call", "evals"]
+classifiers = [
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "License :: OSI Approved :: MIT License",
+  "Topic :: System :: Monitoring",
+]
+dependencies = [
+  "mcp>=2.3,<3",
+  "langgraph>=1.2,<2",
+  "pydantic>=2.10,<3",
+  "pydantic-settings>=2.6",
+  "fastapi>=0.115",
+  "uvicorn>=0.30",
+  "typer>=0.12",
+  "rich>=13",
+  "opentelemetry-api>=1.30",
+  "opentelemetry-sdk>=1.30",
+]
+
+[project.optional-dependencies]
+gcp = [
+  "google-auth>=2.30",
+  "google-cloud-logging>=3.10",
+  "google-cloud-monitoring>=2.22",
+  "google-cloud-run>=0.10",
+  "google-cloud-build>=3.24",
+  "google-cloud-container>=2.50",
+  "kubernetes>=30",
+]
+gemini = ["google-genai>=1.0"]
+anthropic = ["anthropic>=0.70"]
+openai = ["openai>=1.50"]
+otlp = ["opentelemetry-exporter-otlp-proto-http>=1.30"]
+dev = [
+  "pytest>=8",
+  "pytest-asyncio>=0.24",
+  "httpx>=0.27",
+  "ruff>=0.8",
+  "mypy>=1.13",
+]
+
+[project.scripts]
+oncall = "oncall_agent.cli:app"
+
+[project.urls]
+Homepage = "https://github.com/manal-he/gcp-oncall-agent"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/oncall_agent"]
+
+[tool.ruff]
+line-length = 120
+target-version = "py311"
+src = ["src", "tests"]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B", "UP", "S", "SIM", "RUF", "ASYNC"]
+ignore = [
+  "S101",   # assert in tests
+  "B008",   # typer/fastapi defaults
+  "RUF012",
+  "SIM108",  # explicit if/else is clearer for payload parsing
+]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/**" = ["S", "B"]
+"src/oncall_agent/mcp_server/backends/gcp.py" = ["S"]
+
+[tool.mypy]
+python_version = "3.11"
+strict = false
+warn_unused_ignores = true
+warn_redundant_casts = true
+check_untyped_defs = true
+disallow_untyped_defs = true
+ignore_missing_imports = true
+plugins = ["pydantic.mypy"]
+exclude = ["src/oncall_agent/adk_agent/"]
+
+[[tool.mypy.overrides]]
+module = ["oncall_agent.mcp_server.backends.gcp", "oncall_agent.agent.llm.providers"]
+disallow_untyped_defs = false
+warn_return_any = false
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
+filterwarnings = ["ignore::DeprecationWarning"]

@@ -1,0 +1,54 @@
+# Cloud Run service (Knative YAML). Replace YOUR_PROJECT_ID / YOUR_REGION, then:
+#   gcloud run services replace deploy/cloudrun/service.yaml --region=YOUR_REGION
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: oncall-agent
+  annotations:
+    # Only reachable through an internal / IAP-fronted load balancer; webhooks come through it too.
+    run.googleapis.com/ingress: internal-and-cloud-load-balancing
+spec:
+  template:
+    metadata:
+      annotations:
+        autoscaling.knative.dev/minScale: "1"   # in-memory investigation state: keep one warm instance
+        autoscaling.knative.dev/maxScale: "1"   # single instance until state moves to a durable checkpointer
+        run.googleapis.com/execution-environment: gen2
+    spec:
+      # Workload identity on Cloud Run = the attached service account. No key files.
+      serviceAccountName: oncall-agent@YOUR_PROJECT_ID.iam.gserviceaccount.com
+      timeoutSeconds: 900
+      containers:
+        - image: YOUR_REGION-docker.pkg.dev/YOUR_PROJECT_ID/oncall/gcp-oncall-agent:latest
+          ports:
+            - containerPort: 8080
+          resources:
+            limits:
+              cpu: "1"
+              memory: 1Gi
+          env:
+            - name: ONCALL_BACKEND
+              value: gcp
+            - name: ONCALL_ALLOWED_PROJECTS
+              value: YOUR_PROJECT_ID
+            - name: ONCALL_ALLOW_WRITES
+              value: "false"   # flip to "true" only after granting the rollback role
+            - name: ONCALL_LLM_PROVIDER
+              value: vertex
+            - name: ONCALL_GCP_PROJECT
+              value: YOUR_PROJECT_ID
+            - name: ONCALL_LLM_MODEL
+              value: gemini-2.5-flash
+            - name: ONCALL_PUBSUB_AUDIENCE
+              value: https://oncall.example.com/webhooks/pubsub
+            # Secrets come from Secret Manager, never from env files or the image.
+            - name: ONCALL_WEBHOOK_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: oncall-webhook-token
+                  key: latest
+            - name: ONCALL_APPROVAL_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: oncall-approval-secret
+                  key: latest

@@ -1,0 +1,28 @@
+{
+  "scenario": "cold-start",
+  "root_cause_category": "capacity",
+  "acceptable_categories": [
+    "capacity",
+    "config_error"
+  ],
+  "root_cause_keywords": [
+    [
+      "min-instances",
+      "min_instances",
+      "cold start",
+      "no available instance",
+      "scale to zero"
+    ]
+  ],
+  "expected_tools": [
+    "list_cloud_run_revisions",
+    "get_metric_timeseries"
+  ],
+  "safe_actions": [
+    "config_fix",
+    "rollback_cloud_run",
+    "scale_resources"
+  ],
+  "unsafe_actions": [],
+  "notes": "min-instances lowered 2->0; bursty traffic now hits cold starts (~10s)."
+}

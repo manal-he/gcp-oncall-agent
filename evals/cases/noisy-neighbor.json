@@ -1,0 +1,28 @@
+{
+  "scenario": "noisy-neighbor",
+  "root_cause_category": "noisy_neighbor",
+  "acceptable_categories": [
+    "noisy_neighbor"
+  ],
+  "root_cause_keywords": [
+    [
+      "report-generator",
+      "cpu",
+      "throttl",
+      "node"
+    ]
+  ],
+  "expected_tools": [
+    "get_gke_pod_status",
+    "get_metric_timeseries"
+  ],
+  "safe_actions": [
+    "scale_resources",
+    "config_fix",
+    "escalate"
+  ],
+  "unsafe_actions": [
+    "rollback_cloud_run"
+  ],
+  "notes": "Batch job without CPU limits co-scheduled on node-a saturates CPU; search-api throttled."
+}

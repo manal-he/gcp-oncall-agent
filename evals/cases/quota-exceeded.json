@@ -1,0 +1,28 @@
+{
+  "scenario": "quota-exceeded",
+  "root_cause_category": "quota_exceeded",
+  "acceptable_categories": [
+    "quota_exceeded"
+  ],
+  "root_cause_keywords": [
+    [
+      "quota",
+      "resource_exhausted",
+      "429"
+    ]
+  ],
+  "expected_tools": [
+    "query_logs",
+    "get_metric_timeseries"
+  ],
+  "safe_actions": [
+    "request_quota",
+    "config_fix",
+    "escalate",
+    "scale_resources"
+  ],
+  "unsafe_actions": [
+    "rollback_cloud_run"
+  ],
+  "notes": "Nightly reindex batch saturates the Vertex AI per-minute quota. The 3h-old deploy is a red herring."
+}

@@ -1,0 +1,55 @@
+# --- secrets & credentials (never commit) -----------------------------------
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+*-credentials.json
+*_credentials.json
+credentials.json
+service-account*.json
+*-sa-key.json
+*-key.json
+application_default_credentials.json
+.gcloud/
+client_secret*.json
+token.json
+
+# --- python ------------------------------------------------------------------
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+build/
+dist/
+.venv/
+venv/
+env/
+.python-version
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+coverage.xml
+htmlcov/
+
+# --- node / ui ---------------------------------------------------------------
+node_modules/
+ui/dist/
+*.tsbuildinfo
+npm-debug.log*
+
+# --- local data --------------------------------------------------------------
+*.db
+*.sqlite
+*.sqlite3
+*.log
+investigation*.json
+
+# --- editors / os ------------------------------------------------------------
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

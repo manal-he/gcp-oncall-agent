@@ -1,0 +1,13 @@
+# Custom role for the single write tool. Grant it ONLY if you set ONCALL_ALLOW_WRITES=true,
+# ideally on specific services (resource-level binding) rather than on the whole project.
+# Updating a Cloud Run service also requires iam.serviceAccounts.actAs on that service's
+# runtime service account (roles/iam.serviceAccountUser on that one SA only).
+#   gcloud iam roles create oncallAgentRollback --project=YOUR_PROJECT_ID \
+#     --file=deploy/cloudrun/iam/oncall-rollback-role.yaml
+title: On-call Agent Rollback
+description: Shift Cloud Run traffic to an existing revision (approval-gated rollback).
+stage: GA
+includedPermissions:
+  - run.services.get
+  - run.services.update
+  - run.operations.get

@@ -1,0 +1,25 @@
+# Custom role: exactly the read permissions the MCP tools use. Nothing else.
+#   gcloud iam roles create oncallAgentReader --project=YOUR_PROJECT_ID \
+#     --file=deploy/cloudrun/iam/oncall-reader-role.yaml
+title: On-call Agent Reader
+description: Read-only access for gcp-oncall-agent MCP tools (logs, metrics, Cloud Run, GKE pods, Cloud Build).
+stage: GA
+includedPermissions:
+  # query_logs
+  - logging.logEntries.list
+  # get_metric_timeseries / get_active_alerts
+  - monitoring.timeSeries.list
+  - monitoring.alertPolicies.list
+  - monitoring.alertPolicies.get
+  # list_cloud_run_revisions
+  - run.services.get
+  - run.services.list
+  - run.revisions.get
+  - run.revisions.list
+  # get_gke_pod_status (cluster endpoint + pod read through the Kubernetes API)
+  - container.clusters.get
+  - container.pods.list
+  - container.pods.get
+  # list_recent_builds
+  - cloudbuild.builds.list
+  - cloudbuild.builds.get

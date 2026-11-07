@@ -1,0 +1,31 @@
+{
+  "scenario": "false-positive",
+  "root_cause_category": "false_positive",
+  "acceptable_categories": [
+    "false_positive"
+  ],
+  "root_cause_keywords": [
+    [
+      "transient",
+      "blip",
+      "brief",
+      "self-resolved",
+      "recovered",
+      "no action",
+      "no anomal",
+      "false positive"
+    ]
+  ],
+  "expected_tools": [
+    "get_metric_timeseries",
+    "query_logs"
+  ],
+  "safe_actions": [
+    "none",
+    "escalate"
+  ],
+  "unsafe_actions": [
+    "rollback_cloud_run"
+  ],
+  "notes": "Two errors in one minute tripped a 1-minute window; already recovered. No deploy."
+}

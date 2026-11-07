@@ -1,0 +1,283 @@
+{
+ "name": "db-pool-exhaustion",
+ "title": "orders-api 5xx with database errors",
+ "now": "2026-10-14T14:30:00Z",
+ "project_id": "demo-project-123",
+ "alert": {
+  "version": "1.2",
+  "incident": {
+   "incident_id": "0.mock-db-001",
+   "t": -25,
+   "state": "open",
+   "policy_name": "orders-api 5xx rate above 1 req/s",
+   "condition_name": "orders-api 5xx rate above 1 req/s",
+   "summary": "orders-api 5xx rate above 1 req/s",
+   "url": "https://console.cloud.google.com/monitoring/alerting?project=demo-project-123",
+   "resource": {
+    "type": "cloud_run_revision",
+    "labels": {
+     "project_id": "demo-project-123",
+     "service_name": "orders-api",
+     "location": "europe-west1"
+    }
+   },
+   "metric": {
+    "type": "run.googleapis.com/request_count",
+    "displayName": "request_count"
+   }
+  }
+ },
+ "logs": [
+  {
+   "t": -42,
+   "severity": "INFO",
+   "resource": {
+    "type": "cloud_run_revision",
+    "labels": {
+     "service_name": "orders-api",
+     "revision_name": "orders-api-00090-rtg"
+    }
+   },
+   "text": "Revision orders-api-00090-rtg: autoscaling max-instances changed 10 -> 100"
+  },
+  {
+   "t": -30,
+   "severity": "ERROR",
+   "resource": {
+    "type": "cloud_run_revision",
+    "labels": {
+     "service_name": "orders-api",
+     "revision_name": "orders-api-00090-rtg"
+    }
+   },
+   "text": "sqlalchemy.exc.OperationalError: FATAL: remaining connection slots are reserved for non-replication superuser connections"
+  },
+  {
+   "t": -27,
+   "severity": "ERROR",
+   "resource": {
+    "type": "cloud_run_revision",
+    "labels": {
+     "service_name": "orders-api",
+     "revision_name": "orders-api-00090-rtg"
+    }
+   },
+   "text": "sqlalchemy.exc.OperationalError: FATAL: remaining connection slots are reserved for non-replication superuser connections"
+  },
+  {
+   "t": -24,
+   "severity": "ERROR",
+   "resource": {
+    "type": "cloud_run_revision",
+    "labels": {
+     "service_name": "orders-api",
+     "revision_name": "orders-api-00090-rtg"
+    }
+   },
+   "text": "sqlalchemy.exc.OperationalError: FATAL: remaining connection slots are reserved for non-replication superuser connections"
+  },
+  {
+   "t": -20,
+   "severity": "ERROR",
+   "resource": {
+    "type": "cloud_run_revision",
+    "labels": {
+     "service_name": "orders-api",
+     "revision_name": "orders-api-00090-rtg"
+    }
+   },
+   "text": "sqlalchemy.exc.OperationalError: FATAL: remaining connection slots are reserved for non-replication superuser connections"
+  },
+  {
+   "t": -16,
+   "severity": "ERROR",
+   "resource": {
+    "type": "cloud_run_revision",
+    "labels": {
+     "service_name": "orders-api",
+     "revision_name": "orders-api-00090-rtg"
+    }
+   },
+   "text": "sqlalchemy.exc.OperationalError: FATAL: remaining connection slots are reserved for non-replication superuser connections"
+  },
+  {
+   "t": -12,
+   "severity": "ERROR",
+   "resource": {
+    "type": "cloud_run_revision",
+    "labels": {
+     "service_name": "orders-api",
+     "revision_name": "orders-api-00090-rtg"
+    }
+   },
+   "text": "sqlalchemy.exc.OperationalError: FATAL: remaining connection slots are reserved for non-replication superuser connections"
+  },
+  {
+   "t": -8,
+   "severity": "ERROR",
+   "resource": {
+    "type": "cloud_run_revision",
+    "labels": {
+     "service_name": "orders-api",
+     "revision_name": "orders-api-00090-rtg"
+    }
+   },
+   "text": "sqlalchemy.exc.OperationalError: FATAL: remaining connection slots are reserved for non-replication superuser connections"
+  },
+  {
+   "t": -4,
+   "severity": "ERROR",
+   "resource": {
+    "type": "cloud_run_revision",
+    "labels": {
+     "service_name": "orders-api",
+     "revision_name": "orders-api-00090-rtg"
+    }
+   },
+   "text": "sqlalchemy.exc.OperationalError: FATAL: remaining connection slots are reserved for non-replication superuser connections"
+  },
+  {
+   "t": -14,
+   "severity": "ERROR",
+   "resource": {
+    "type": "cloud_run_revision",
+    "labels": {
+     "service_name": "orders-api",
+     "revision_name": "orders-api-00090-rtg"
+    }
+   },
+   "text": "timeout acquiring connection from pool after 30s (pool_size=10)"
+  }
+ ],
+ "metrics": {
+  "run_request_count_5xx": [
+   {
+    "labels": {
+     "service_name": "orders-api"
+    },
+    "unit": "1/s",
+    "points": [
+     [
+      -60,
+      0
+     ],
+     [
+      -35,
+      0.1
+     ],
+     [
+      -30,
+      2.0
+     ],
+     [
+      -15,
+      3.4
+     ],
+     [
+      0,
+      3.1
+     ]
+    ]
+   }
+  ],
+  "run_instance_count": [
+   {
+    "labels": {
+     "service_name": "orders-api"
+    },
+    "unit": "1",
+    "points": [
+     [
+      -60,
+      6
+     ],
+     [
+      -40,
+      9
+     ],
+     [
+      -30,
+      34
+     ],
+     [
+      -15,
+      61
+     ],
+     [
+      0,
+      58
+     ]
+    ]
+   }
+  ],
+  "cloudsql_connections": [
+   {
+    "labels": {
+     "database_id": "demo-project-123:orders-db"
+    },
+    "unit": "1",
+    "points": [
+     [
+      -60,
+      61
+     ],
+     [
+      -40,
+      72
+     ],
+     [
+      -30,
+      97
+     ],
+     [
+      -15,
+      100
+     ],
+     [
+      0,
+      100
+     ]
+    ]
+   }
+  ]
+ },
+ "cloud_run": {
+  "orders-api": {
+   "region": "europe-west1",
+   "url": "https://orders.example.com",
+   "revisions": [
+    {
+     "name": "orders-api-00090-rtg",
+     "t": -42,
+     "image": "europe-west1-docker.pkg.dev/demo-project-123/apps/orders:77ab0c1",
+     "traffic_percent": 100,
+     "ready": true,
+     "config": {
+      "max_instances": 100,
+      "min_instances": 1,
+      "memory": "512Mi",
+      "env_names": [
+       "DATABASE_URL"
+      ]
+     }
+    },
+    {
+     "name": "orders-api-00089-edc",
+     "t": -12000,
+     "image": "europe-west1-docker.pkg.dev/demo-project-123/apps/orders:77ab0c1",
+     "traffic_percent": 0,
+     "ready": true,
+     "config": {
+      "max_instances": 10,
+      "min_instances": 1,
+      "memory": "512Mi",
+      "env_names": [
+       "DATABASE_URL"
+      ]
+     }
+    }
+   ]
+  }
+ },
+ "builds": []
+}

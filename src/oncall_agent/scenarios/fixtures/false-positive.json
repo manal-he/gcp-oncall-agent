@@ -1,0 +1,147 @@
+{
+ "name": "false-positive",
+ "title": "inventory brief 5xx blip",
+ "now": "2026-10-14T14:30:00Z",
+ "project_id": "demo-project-123",
+ "alert": {
+  "version": "1.2",
+  "incident": {
+   "incident_id": "0.mock-fp-001",
+   "t": -20,
+   "state": "open",
+   "policy_name": "inventory 5xx rate above 1 req/s (1 min window)",
+   "condition_name": "inventory 5xx rate above 1 req/s (1 min window)",
+   "summary": "inventory 5xx rate above 1 req/s (1 min window)",
+   "url": "https://console.cloud.google.com/monitoring/alerting?project=demo-project-123",
+   "resource": {
+    "type": "cloud_run_revision",
+    "labels": {
+     "project_id": "demo-project-123",
+     "service_name": "inventory",
+     "location": "europe-west1"
+    }
+   },
+   "metric": {
+    "type": "run.googleapis.com/request_count",
+    "displayName": "request_count"
+   }
+  }
+ },
+ "logs": [
+  {
+   "t": -21,
+   "severity": "ERROR",
+   "resource": {
+    "type": "cloud_run_revision",
+    "labels": {
+     "service_name": "inventory",
+     "revision_name": "inventory-00019-bnm"
+    }
+   },
+   "text": "POST /api/reserve 500 12ms"
+  },
+  {
+   "t": -20,
+   "severity": "ERROR",
+   "resource": {
+    "type": "cloud_run_revision",
+    "labels": {
+     "service_name": "inventory",
+     "revision_name": "inventory-00019-bnm"
+    }
+   },
+   "text": "POST /api/reserve 500 9ms"
+  },
+  {
+   "t": -45,
+   "severity": "WARNING",
+   "resource": {
+    "type": "cloud_run_revision",
+    "labels": {
+     "service_name": "inventory",
+     "revision_name": "inventory-00019-bnm"
+    }
+   },
+   "text": "cache miss ratio 0.21 above 0.2"
+  }
+ ],
+ "metrics": {
+  "run_request_count_5xx": [
+   {
+    "labels": {
+     "service_name": "inventory"
+    },
+    "unit": "1/s",
+    "points": [
+     [
+      -60,
+      0
+     ],
+     [
+      -22,
+      0
+     ],
+     [
+      -21,
+      1.2
+     ],
+     [
+      -20,
+      1.1
+     ],
+     [
+      -19,
+      0
+     ],
+     [
+      -10,
+      0
+     ],
+     [
+      0,
+      0
+     ]
+    ]
+   }
+  ]
+ },
+ "cloud_run": {
+  "inventory": {
+   "region": "europe-west1",
+   "url": "https://inventory.example.com",
+   "revisions": [
+    {
+     "name": "inventory-00019-bnm",
+     "t": -14000,
+     "image": "europe-west1-docker.pkg.dev/demo-project-123/apps/inventory:6e5d4c3",
+     "traffic_percent": 100,
+     "ready": true,
+     "config": {
+      "max_instances": 20,
+      "min_instances": 1,
+      "memory": "512Mi",
+      "env_names": [
+       "DATABASE_URL"
+      ]
+     }
+    },
+    {
+     "name": "inventory-00018-vcx",
+     "t": -30000,
+     "image": "europe-west1-docker.pkg.dev/demo-project-123/apps/inventory:2b3c4d5",
+     "traffic_percent": 0,
+     "ready": true,
+     "config": {
+      "max_instances": 20,
+      "min_instances": 1,
+      "memory": "512Mi",
+      "env_names": [
+       "DATABASE_URL"
+      ]
+     }
+    }
+   ]
+  }
+ },
+ "builds": []
+}

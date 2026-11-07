@@ -1,0 +1,289 @@
+{
+ "name": "quota-exceeded",
+ "title": "doc-summarizer failing with 429s",
+ "now": "2026-10-14T14:30:00Z",
+ "project_id": "demo-project-123",
+ "alert": {
+  "version": "1.2",
+  "incident": {
+   "incident_id": "0.mock-quota-001",
+   "t": -20,
+   "state": "open",
+   "policy_name": "doc-summarizer 5xx rate above 2 req/s",
+   "condition_name": "doc-summarizer 5xx rate above 2 req/s",
+   "summary": "doc-summarizer 5xx rate above 2 req/s",
+   "url": "https://console.cloud.google.com/monitoring/alerting?project=demo-project-123",
+   "resource": {
+    "type": "cloud_run_revision",
+    "labels": {
+     "project_id": "demo-project-123",
+     "service_name": "doc-summarizer",
+     "location": "europe-west1"
+    }
+   },
+   "metric": {
+    "type": "run.googleapis.com/request_count",
+    "displayName": "request_count"
+   }
+  }
+ },
+ "logs": [
+  {
+   "t": -170,
+   "severity": "INFO",
+   "resource": {
+    "type": "cloud_run_revision",
+    "labels": {
+     "service_name": "doc-summarizer",
+     "revision_name": "doc-summarizer-00012-qaz"
+    }
+   },
+   "text": "Deployed doc-summarizer revision 00012 (prompt template v4)"
+  },
+  {
+   "t": -28,
+   "severity": "ERROR",
+   "resource": {
+    "type": "cloud_run_revision",
+    "labels": {
+     "service_name": "doc-summarizer",
+     "revision_name": "doc-summarizer-00012-qaz"
+    }
+   },
+   "text": "google.api_core.exceptions.ResourceExhausted: 429 RESOURCE_EXHAUSTED: Quota exceeded for aiplatform.googleapis.com/generate_content_requests_per_minute_per_project_per_base_model"
+  },
+  {
+   "t": -26,
+   "severity": "ERROR",
+   "resource": {
+    "type": "cloud_run_revision",
+    "labels": {
+     "service_name": "doc-summarizer",
+     "revision_name": "doc-summarizer-00012-qaz"
+    }
+   },
+   "text": "google.api_core.exceptions.ResourceExhausted: 429 RESOURCE_EXHAUSTED: Quota exceeded for aiplatform.googleapis.com/generate_content_requests_per_minute_per_project_per_base_model"
+  },
+  {
+   "t": -23,
+   "severity": "ERROR",
+   "resource": {
+    "type": "cloud_run_revision",
+    "labels": {
+     "service_name": "doc-summarizer",
+     "revision_name": "doc-summarizer-00012-qaz"
+    }
+   },
+   "text": "google.api_core.exceptions.ResourceExhausted: 429 RESOURCE_EXHAUSTED: Quota exceeded for aiplatform.googleapis.com/generate_content_requests_per_minute_per_project_per_base_model"
+  },
+  {
+   "t": -20,
+   "severity": "ERROR",
+   "resource": {
+    "type": "cloud_run_revision",
+    "labels": {
+     "service_name": "doc-summarizer",
+     "revision_name": "doc-summarizer-00012-qaz"
+    }
+   },
+   "text": "google.api_core.exceptions.ResourceExhausted: 429 RESOURCE_EXHAUSTED: Quota exceeded for aiplatform.googleapis.com/generate_content_requests_per_minute_per_project_per_base_model"
+  },
+  {
+   "t": -16,
+   "severity": "ERROR",
+   "resource": {
+    "type": "cloud_run_revision",
+    "labels": {
+     "service_name": "doc-summarizer",
+     "revision_name": "doc-summarizer-00012-qaz"
+    }
+   },
+   "text": "google.api_core.exceptions.ResourceExhausted: 429 RESOURCE_EXHAUSTED: Quota exceeded for aiplatform.googleapis.com/generate_content_requests_per_minute_per_project_per_base_model"
+  },
+  {
+   "t": -12,
+   "severity": "ERROR",
+   "resource": {
+    "type": "cloud_run_revision",
+    "labels": {
+     "service_name": "doc-summarizer",
+     "revision_name": "doc-summarizer-00012-qaz"
+    }
+   },
+   "text": "google.api_core.exceptions.ResourceExhausted: 429 RESOURCE_EXHAUSTED: Quota exceeded for aiplatform.googleapis.com/generate_content_requests_per_minute_per_project_per_base_model"
+  },
+  {
+   "t": -9,
+   "severity": "ERROR",
+   "resource": {
+    "type": "cloud_run_revision",
+    "labels": {
+     "service_name": "doc-summarizer",
+     "revision_name": "doc-summarizer-00012-qaz"
+    }
+   },
+   "text": "google.api_core.exceptions.ResourceExhausted: 429 RESOURCE_EXHAUSTED: Quota exceeded for aiplatform.googleapis.com/generate_content_requests_per_minute_per_project_per_base_model"
+  },
+  {
+   "t": -5,
+   "severity": "ERROR",
+   "resource": {
+    "type": "cloud_run_revision",
+    "labels": {
+     "service_name": "doc-summarizer",
+     "revision_name": "doc-summarizer-00012-qaz"
+    }
+   },
+   "text": "google.api_core.exceptions.ResourceExhausted: 429 RESOURCE_EXHAUSTED: Quota exceeded for aiplatform.googleapis.com/generate_content_requests_per_minute_per_project_per_base_model"
+  },
+  {
+   "t": -2,
+   "severity": "ERROR",
+   "resource": {
+    "type": "cloud_run_revision",
+    "labels": {
+     "service_name": "doc-summarizer",
+     "revision_name": "doc-summarizer-00012-qaz"
+    }
+   },
+   "text": "google.api_core.exceptions.ResourceExhausted: 429 RESOURCE_EXHAUSTED: Quota exceeded for aiplatform.googleapis.com/generate_content_requests_per_minute_per_project_per_base_model"
+  },
+  {
+   "t": -31,
+   "severity": "INFO",
+   "resource": {
+    "type": "cloud_run_revision",
+    "labels": {
+     "service_name": "doc-summarizer",
+     "revision_name": "doc-summarizer-00012-qaz"
+    }
+   },
+   "text": "batch import job nightly-reindex started: 48000 documents queued"
+  }
+ ],
+ "metrics": {
+  "run_request_count_5xx": [
+   {
+    "labels": {
+     "service_name": "doc-summarizer"
+    },
+    "unit": "1/s",
+    "points": [
+     [
+      -60,
+      0
+     ],
+     [
+      -30,
+      0.1
+     ],
+     [
+      -27,
+      3.1
+     ],
+     [
+      -20,
+      4.4
+     ],
+     [
+      -10,
+      4.8
+     ],
+     [
+      0,
+      4.6
+     ]
+    ]
+   }
+  ],
+  "api_quota_usage_ratio": [
+   {
+    "labels": {
+     "service": "aiplatform.googleapis.com",
+     "quota_metric": "generate_content_requests_per_minute"
+    },
+    "unit": "ratio",
+    "points": [
+     [
+      -60,
+      0.22
+     ],
+     [
+      -40,
+      0.25
+     ],
+     [
+      -30,
+      0.71
+     ],
+     [
+      -28,
+      1.0
+     ],
+     [
+      -15,
+      1.0
+     ],
+     [
+      0,
+      1.0
+     ]
+    ]
+   }
+  ]
+ },
+ "cloud_run": {
+  "doc-summarizer": {
+   "region": "europe-west1",
+   "url": "https://summarizer.example.com",
+   "revisions": [
+    {
+     "name": "doc-summarizer-00012-qaz",
+     "t": -170,
+     "image": "europe-west1-docker.pkg.dev/demo-project-123/apps/doc:4be1a77",
+     "traffic_percent": 100,
+     "ready": true,
+     "config": {
+      "max_instances": 20,
+      "min_instances": 1,
+      "memory": "512Mi",
+      "env_names": [
+       "DATABASE_URL"
+      ]
+     }
+    },
+    {
+     "name": "doc-summarizer-00011-wsx",
+     "t": -9000,
+     "image": "europe-west1-docker.pkg.dev/demo-project-123/apps/doc:0aa3c19",
+     "traffic_percent": 0,
+     "ready": true,
+     "config": {
+      "max_instances": 20,
+      "min_instances": 1,
+      "memory": "512Mi",
+      "env_names": [
+       "DATABASE_URL"
+      ]
+     }
+    }
+   ]
+  }
+ },
+ "builds": [
+  {
+   "id": "b-sum-4be1a77",
+   "t": -180,
+   "status": "SUCCESS",
+   "images": [
+    "europe-west1-docker.pkg.dev/demo-project-123/apps/doc-summarizer:4be1a77"
+   ],
+   "trigger_id": "doc-summarizer-main",
+   "substitutions": {
+    "BRANCH_NAME": "main",
+    "SHORT_SHA": "4be1a77"
+   },
+   "failure_detail": null
+  }
+ ]
+}

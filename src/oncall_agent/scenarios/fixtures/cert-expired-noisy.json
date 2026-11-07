@@ -1,0 +1,484 @@
+{
+ "name": "cert-expired-noisy",
+ "title": "ledger-sync backlog growing",
+ "now": "2026-10-14T14:30:00Z",
+ "project_id": "demo-project-123",
+ "alert": {
+  "version": "1.2",
+  "incident": {
+   "incident_id": "0.mock-cert-001",
+   "t": -20,
+   "state": "open",
+   "policy_name": "ledger-sync failed batches above 10 in 15m",
+   "condition_name": "ledger-sync failed batches above 10 in 15m",
+   "summary": "ledger-sync failed batches above 10 in 15m",
+   "url": "https://console.cloud.google.com/monitoring/alerting?project=demo-project-123",
+   "resource": {
+    "type": "cloud_run_revision",
+    "labels": {
+     "project_id": "demo-project-123",
+     "service_name": "ledger-sync",
+     "location": "europe-west1"
+    }
+   },
+   "metric": {
+    "type": "logging.googleapis.com/user/ledger_sync_failures",
+    "displayName": "ledger_sync_failures"
+   }
+  }
+ },
+ "logs": [
+  {
+   "t": -118,
+   "severity": "WARNING",
+   "resource": {
+    "type": "cloud_run_revision",
+    "labels": {
+     "service_name": "ledger-sync",
+     "revision_name": "ledger-sync-00007-uio"
+    }
+   },
+   "text": "DeprecationWarning: pkg_resources is deprecated as an API"
+  },
+  {
+   "t": -116,
+   "severity": "ERROR",
+   "resource": {
+    "type": "cloud_run_revision",
+    "labels": {
+     "service_name": "ledger-sync",
+     "revision_name": "ledger-sync-00007-uio"
+    }
+   },
+   "text": "metrics exporter: failed to export 3 points (retrying in 5s)"
+  },
+  {
+   "t": -109,
+   "severity": "WARNING",
+   "resource": {
+    "type": "cloud_run_revision",
+    "labels": {
+     "service_name": "ledger-sync",
+     "revision_name": "ledger-sync-00007-uio"
+    }
+   },
+   "text": "DeprecationWarning: pkg_resources is deprecated as an API"
+  },
+  {
+   "t": -107,
+   "severity": "ERROR",
+   "resource": {
+    "type": "cloud_run_revision",
+    "labels": {
+     "service_name": "ledger-sync",
+     "revision_name": "ledger-sync-00007-uio"
+    }
+   },
+   "text": "metrics exporter: failed to export 3 points (retrying in 5s)"
+  },
+  {
+   "t": -100,
+   "severity": "WARNING",
+   "resource": {
+    "type": "cloud_run_revision",
+    "labels": {
+     "service_name": "ledger-sync",
+     "revision_name": "ledger-sync-00007-uio"
+    }
+   },
+   "text": "DeprecationWarning: pkg_resources is deprecated as an API"
+  },
+  {
+   "t": -98,
+   "severity": "ERROR",
+   "resource": {
+    "type": "cloud_run_revision",
+    "labels": {
+     "service_name": "ledger-sync",
+     "revision_name": "ledger-sync-00007-uio"
+    }
+   },
+   "text": "metrics exporter: failed to export 3 points (retrying in 5s)"
+  },
+  {
+   "t": -91,
+   "severity": "WARNING",
+   "resource": {
+    "type": "cloud_run_revision",
+    "labels": {
+     "service_name": "ledger-sync",
+     "revision_name": "ledger-sync-00007-uio"
+    }
+   },
+   "text": "DeprecationWarning: pkg_resources is deprecated as an API"
+  },
+  {
+   "t": -89,
+   "severity": "ERROR",
+   "resource": {
+    "type": "cloud_run_revision",
+    "labels": {
+     "service_name": "ledger-sync",
+     "revision_name": "ledger-sync-00007-uio"
+    }
+   },
+   "text": "metrics exporter: failed to export 3 points (retrying in 5s)"
+  },
+  {
+   "t": -82,
+   "severity": "WARNING",
+   "resource": {
+    "type": "cloud_run_revision",
+    "labels": {
+     "service_name": "ledger-sync",
+     "revision_name": "ledger-sync-00007-uio"
+    }
+   },
+   "text": "DeprecationWarning: pkg_resources is deprecated as an API"
+  },
+  {
+   "t": -80,
+   "severity": "ERROR",
+   "resource": {
+    "type": "cloud_run_revision",
+    "labels": {
+     "service_name": "ledger-sync",
+     "revision_name": "ledger-sync-00007-uio"
+    }
+   },
+   "text": "metrics exporter: failed to export 3 points (retrying in 5s)"
+  },
+  {
+   "t": -73,
+   "severity": "WARNING",
+   "resource": {
+    "type": "cloud_run_revision",
+    "labels": {
+     "service_name": "ledger-sync",
+     "revision_name": "ledger-sync-00007-uio"
+    }
+   },
+   "text": "DeprecationWarning: pkg_resources is deprecated as an API"
+  },
+  {
+   "t": -71,
+   "severity": "ERROR",
+   "resource": {
+    "type": "cloud_run_revision",
+    "labels": {
+     "service_name": "ledger-sync",
+     "revision_name": "ledger-sync-00007-uio"
+    }
+   },
+   "text": "metrics exporter: failed to export 3 points (retrying in 5s)"
+  },
+  {
+   "t": -64,
+   "severity": "WARNING",
+   "resource": {
+    "type": "cloud_run_revision",
+    "labels": {
+     "service_name": "ledger-sync",
+     "revision_name": "ledger-sync-00007-uio"
+    }
+   },
+   "text": "DeprecationWarning: pkg_resources is deprecated as an API"
+  },
+  {
+   "t": -62,
+   "severity": "ERROR",
+   "resource": {
+    "type": "cloud_run_revision",
+    "labels": {
+     "service_name": "ledger-sync",
+     "revision_name": "ledger-sync-00007-uio"
+    }
+   },
+   "text": "metrics exporter: failed to export 3 points (retrying in 5s)"
+  },
+  {
+   "t": -55,
+   "severity": "WARNING",
+   "resource": {
+    "type": "cloud_run_revision",
+    "labels": {
+     "service_name": "ledger-sync",
+     "revision_name": "ledger-sync-00007-uio"
+    }
+   },
+   "text": "DeprecationWarning: pkg_resources is deprecated as an API"
+  },
+  {
+   "t": -53,
+   "severity": "ERROR",
+   "resource": {
+    "type": "cloud_run_revision",
+    "labels": {
+     "service_name": "ledger-sync",
+     "revision_name": "ledger-sync-00007-uio"
+    }
+   },
+   "text": "metrics exporter: failed to export 3 points (retrying in 5s)"
+  },
+  {
+   "t": -46,
+   "severity": "WARNING",
+   "resource": {
+    "type": "cloud_run_revision",
+    "labels": {
+     "service_name": "ledger-sync",
+     "revision_name": "ledger-sync-00007-uio"
+    }
+   },
+   "text": "DeprecationWarning: pkg_resources is deprecated as an API"
+  },
+  {
+   "t": -44,
+   "severity": "ERROR",
+   "resource": {
+    "type": "cloud_run_revision",
+    "labels": {
+     "service_name": "ledger-sync",
+     "revision_name": "ledger-sync-00007-uio"
+    }
+   },
+   "text": "metrics exporter: failed to export 3 points (retrying in 5s)"
+  },
+  {
+   "t": -37,
+   "severity": "WARNING",
+   "resource": {
+    "type": "cloud_run_revision",
+    "labels": {
+     "service_name": "ledger-sync",
+     "revision_name": "ledger-sync-00007-uio"
+    }
+   },
+   "text": "DeprecationWarning: pkg_resources is deprecated as an API"
+  },
+  {
+   "t": -35,
+   "severity": "ERROR",
+   "resource": {
+    "type": "cloud_run_revision",
+    "labels": {
+     "service_name": "ledger-sync",
+     "revision_name": "ledger-sync-00007-uio"
+    }
+   },
+   "text": "metrics exporter: failed to export 3 points (retrying in 5s)"
+  },
+  {
+   "t": -28,
+   "severity": "WARNING",
+   "resource": {
+    "type": "cloud_run_revision",
+    "labels": {
+     "service_name": "ledger-sync",
+     "revision_name": "ledger-sync-00007-uio"
+    }
+   },
+   "text": "DeprecationWarning: pkg_resources is deprecated as an API"
+  },
+  {
+   "t": -26,
+   "severity": "ERROR",
+   "resource": {
+    "type": "cloud_run_revision",
+    "labels": {
+     "service_name": "ledger-sync",
+     "revision_name": "ledger-sync-00007-uio"
+    }
+   },
+   "text": "metrics exporter: failed to export 3 points (retrying in 5s)"
+  },
+  {
+   "t": -19,
+   "severity": "WARNING",
+   "resource": {
+    "type": "cloud_run_revision",
+    "labels": {
+     "service_name": "ledger-sync",
+     "revision_name": "ledger-sync-00007-uio"
+    }
+   },
+   "text": "DeprecationWarning: pkg_resources is deprecated as an API"
+  },
+  {
+   "t": -17,
+   "severity": "ERROR",
+   "resource": {
+    "type": "cloud_run_revision",
+    "labels": {
+     "service_name": "ledger-sync",
+     "revision_name": "ledger-sync-00007-uio"
+    }
+   },
+   "text": "metrics exporter: failed to export 3 points (retrying in 5s)"
+  },
+  {
+   "t": -10,
+   "severity": "WARNING",
+   "resource": {
+    "type": "cloud_run_revision",
+    "labels": {
+     "service_name": "ledger-sync",
+     "revision_name": "ledger-sync-00007-uio"
+    }
+   },
+   "text": "DeprecationWarning: pkg_resources is deprecated as an API"
+  },
+  {
+   "t": -8,
+   "severity": "ERROR",
+   "resource": {
+    "type": "cloud_run_revision",
+    "labels": {
+     "service_name": "ledger-sync",
+     "revision_name": "ledger-sync-00007-uio"
+    }
+   },
+   "text": "metrics exporter: failed to export 3 points (retrying in 5s)"
+  },
+  {
+   "t": -1,
+   "severity": "WARNING",
+   "resource": {
+    "type": "cloud_run_revision",
+    "labels": {
+     "service_name": "ledger-sync",
+     "revision_name": "ledger-sync-00007-uio"
+    }
+   },
+   "text": "DeprecationWarning: pkg_resources is deprecated as an API"
+  },
+  {
+   "t": 1,
+   "severity": "ERROR",
+   "resource": {
+    "type": "cloud_run_revision",
+    "labels": {
+     "service_name": "ledger-sync",
+     "revision_name": "ledger-sync-00007-uio"
+    }
+   },
+   "text": "metrics exporter: failed to export 3 points (retrying in 5s)"
+  },
+  {
+   "t": -29,
+   "severity": "ERROR",
+   "resource": {
+    "type": "cloud_run_revision",
+    "labels": {
+     "service_name": "ledger-sync",
+     "revision_name": "ledger-sync-00007-uio"
+    }
+   },
+   "text": "sync failed: Post https://ledger.internal.example.com/v1/batch: x509: certificate has expired or is not yet valid: current time 2026-10-14T14:01:12Z is after 2026-10-14T14:00:00Z"
+  },
+  {
+   "t": -24,
+   "severity": "ERROR",
+   "resource": {
+    "type": "cloud_run_revision",
+    "labels": {
+     "service_name": "ledger-sync",
+     "revision_name": "ledger-sync-00007-uio"
+    }
+   },
+   "text": "sync failed: Post https://ledger.internal.example.com/v1/batch: x509: certificate has expired or is not yet valid: current time 2026-10-14T14:01:12Z is after 2026-10-14T14:00:00Z"
+  },
+  {
+   "t": -18,
+   "severity": "ERROR",
+   "resource": {
+    "type": "cloud_run_revision",
+    "labels": {
+     "service_name": "ledger-sync",
+     "revision_name": "ledger-sync-00007-uio"
+    }
+   },
+   "text": "sync failed: Post https://ledger.internal.example.com/v1/batch: x509: certificate has expired or is not yet valid: current time 2026-10-14T14:01:12Z is after 2026-10-14T14:00:00Z"
+  },
+  {
+   "t": -13,
+   "severity": "ERROR",
+   "resource": {
+    "type": "cloud_run_revision",
+    "labels": {
+     "service_name": "ledger-sync",
+     "revision_name": "ledger-sync-00007-uio"
+    }
+   },
+   "text": "sync failed: Post https://ledger.internal.example.com/v1/batch: x509: certificate has expired or is not yet valid: current time 2026-10-14T14:01:12Z is after 2026-10-14T14:00:00Z"
+  },
+  {
+   "t": -8,
+   "severity": "ERROR",
+   "resource": {
+    "type": "cloud_run_revision",
+    "labels": {
+     "service_name": "ledger-sync",
+     "revision_name": "ledger-sync-00007-uio"
+    }
+   },
+   "text": "sync failed: Post https://ledger.internal.example.com/v1/batch: x509: certificate has expired or is not yet valid: current time 2026-10-14T14:01:12Z is after 2026-10-14T14:00:00Z"
+  },
+  {
+   "t": -2,
+   "severity": "ERROR",
+   "resource": {
+    "type": "cloud_run_revision",
+    "labels": {
+     "service_name": "ledger-sync",
+     "revision_name": "ledger-sync-00007-uio"
+    }
+   },
+   "text": "sync failed: Post https://ledger.internal.example.com/v1/batch: x509: certificate has expired or is not yet valid: current time 2026-10-14T14:01:12Z is after 2026-10-14T14:00:00Z"
+  }
+ ],
+ "metrics": {
+  "run_request_count_5xx": [
+   {
+    "labels": {
+     "service_name": "ledger-sync"
+    },
+    "unit": "1/s",
+    "points": [
+     [
+      -60,
+      0
+     ],
+     [
+      0,
+      0
+     ]
+    ]
+   }
+  ]
+ },
+ "cloud_run": {
+  "ledger-sync": {
+   "region": "europe-west1",
+   "url": "https://ledger-sync.example.com",
+   "revisions": [
+    {
+     "name": "ledger-sync-00007-uio",
+     "t": -7200,
+     "image": "europe-west1-docker.pkg.dev/demo-project-123/apps/ledger:aa11bb2",
+     "traffic_percent": 100,
+     "ready": true,
+     "config": {
+      "max_instances": 20,
+      "min_instances": 1,
+      "memory": "512Mi",
+      "env_names": [
+       "DATABASE_URL"
+      ]
+     }
+    }
+   ]
+  }
+ },
+ "builds": []
+}

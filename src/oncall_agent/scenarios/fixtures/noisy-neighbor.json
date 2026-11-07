@@ -1,0 +1,288 @@
+{
+ "name": "noisy-neighbor",
+ "title": "search-api latency degradation",
+ "now": "2026-10-14T14:30:00Z",
+ "project_id": "demo-project-123",
+ "alert": {
+  "version": "1.2",
+  "incident": {
+   "incident_id": "0.mock-noisy-001",
+   "t": -22,
+   "state": "open",
+   "policy_name": "search-api p99 latency above 1500 ms",
+   "condition_name": "search-api p99 latency above 1500 ms",
+   "summary": "search-api p99 latency above 1500 ms",
+   "url": "https://console.cloud.google.com/monitoring/alerting?project=demo-project-123",
+   "resource": {
+    "type": "k8s_container",
+    "labels": {
+     "project_id": "demo-project-123",
+     "cluster_name": "prod-gke",
+     "location": "europe-west1",
+     "namespace_name": "web",
+     "container_name": "search-api"
+    }
+   },
+   "metric": {
+    "type": "prometheus.googleapis.com/http_server_request_duration_seconds/histogram",
+    "displayName": "histogram"
+   }
+  }
+ },
+ "logs": [
+  {
+   "t": -25,
+   "severity": "WARNING",
+   "resource": {
+    "type": "k8s_container",
+    "labels": {
+     "cluster_name": "prod-gke",
+     "namespace_name": "web",
+     "container_name": "search-api",
+     "app": "search-api",
+     "pod_name": "search-api-5c8b-aaaaa"
+    }
+   },
+   "text": "GET /search 200 2410ms (slow request)"
+  },
+  {
+   "t": -20,
+   "severity": "WARNING",
+   "resource": {
+    "type": "k8s_container",
+    "labels": {
+     "cluster_name": "prod-gke",
+     "namespace_name": "web",
+     "container_name": "search-api",
+     "app": "search-api",
+     "pod_name": "search-api-5c8b-aaaaa"
+    }
+   },
+   "text": "GET /search 200 2410ms (slow request)"
+  },
+  {
+   "t": -15,
+   "severity": "WARNING",
+   "resource": {
+    "type": "k8s_container",
+    "labels": {
+     "cluster_name": "prod-gke",
+     "namespace_name": "web",
+     "container_name": "search-api",
+     "app": "search-api",
+     "pod_name": "search-api-5c8b-aaaaa"
+    }
+   },
+   "text": "GET /search 200 2410ms (slow request)"
+  },
+  {
+   "t": -10,
+   "severity": "WARNING",
+   "resource": {
+    "type": "k8s_container",
+    "labels": {
+     "cluster_name": "prod-gke",
+     "namespace_name": "web",
+     "container_name": "search-api",
+     "app": "search-api",
+     "pod_name": "search-api-5c8b-aaaaa"
+    }
+   },
+   "text": "GET /search 200 2410ms (slow request)"
+  },
+  {
+   "t": -5,
+   "severity": "WARNING",
+   "resource": {
+    "type": "k8s_container",
+    "labels": {
+     "cluster_name": "prod-gke",
+     "namespace_name": "web",
+     "container_name": "search-api",
+     "app": "search-api",
+     "pod_name": "search-api-5c8b-aaaaa"
+    }
+   },
+   "text": "GET /search 200 2410ms (slow request)"
+  },
+  {
+   "t": -18,
+   "severity": "WARNING",
+   "resource": {
+    "type": "k8s_container",
+    "labels": {
+     "cluster_name": "prod-gke",
+     "namespace_name": "web",
+     "container_name": "search-api",
+     "app": "search-api",
+     "pod_name": "search-api-5c8b-aaaaa"
+    }
+   },
+   "text": "CPU throttling detected: throttled 46% of periods in last 60s"
+  },
+  {
+   "t": -27,
+   "severity": "INFO",
+   "resource": {
+    "type": "k8s_container",
+    "labels": {
+     "cluster_name": "prod-gke",
+     "namespace_name": "batch",
+     "container_name": "report-generator",
+     "app": "report-generator",
+     "pod_name": "report-generator-29031-xyz"
+    }
+   },
+   "text": "monthly report generation started (parallelism=16)"
+  }
+ ],
+ "metrics": {
+  "gke_node_cpu_utilization": [
+   {
+    "labels": {
+     "node_name": "gke-prod-pool-1-node-a"
+    },
+    "unit": "ratio",
+    "points": [
+     [
+      -60,
+      0.41
+     ],
+     [
+      -30,
+      0.47
+     ],
+     [
+      -27,
+      0.93
+     ],
+     [
+      -20,
+      0.99
+     ],
+     [
+      -10,
+      0.98
+     ],
+     [
+      0,
+      0.97
+     ]
+    ]
+   }
+  ],
+  "gke_container_restart_count": [
+   {
+    "labels": {
+     "container_name": "search-api"
+    },
+    "unit": "1",
+    "points": [
+     [
+      -60,
+      0
+     ],
+     [
+      0,
+      0
+     ]
+    ]
+   }
+  ]
+ },
+ "gke": {
+  "clusters": [
+   {
+    "name": "prod-gke",
+    "location": "europe-west1",
+    "pods": [
+     {
+      "name": "search-api-5c8b-aaaaa",
+      "namespace": "web",
+      "phase": "Running",
+      "node": "gke-prod-pool-1-node-a",
+      "labels": {
+       "app": "search-api"
+      },
+      "t": -7000,
+      "containers": [
+       {
+        "name": "search-api",
+        "ready": true,
+        "restart_count": 0,
+        "image": "europe-west1-docker.pkg.dev/demo-project-123/apps/search-api:stable",
+        "state": "running",
+        "waiting_reason": null,
+        "last_termination_reason": null,
+        "last_exit_code": null
+       }
+      ],
+      "limits": {
+       "search-api": {
+        "cpu": "500m",
+        "memory": "512Mi"
+       }
+      }
+     },
+     {
+      "name": "search-api-5c8b-bbbbb",
+      "namespace": "web",
+      "phase": "Running",
+      "node": "gke-prod-pool-1-node-b",
+      "labels": {
+       "app": "search-api"
+      },
+      "t": -7000,
+      "containers": [
+       {
+        "name": "search-api",
+        "ready": true,
+        "restart_count": 0,
+        "image": "europe-west1-docker.pkg.dev/demo-project-123/apps/search-api:stable",
+        "state": "running",
+        "waiting_reason": null,
+        "last_termination_reason": null,
+        "last_exit_code": null
+       }
+      ],
+      "limits": {
+       "search-api": {
+        "cpu": "500m",
+        "memory": "512Mi"
+       }
+      }
+     },
+     {
+      "name": "report-generator-29031-xyz",
+      "namespace": "batch",
+      "phase": "Running",
+      "node": "gke-prod-pool-1-node-a",
+      "labels": {
+       "app": "report-generator"
+      },
+      "t": -27,
+      "containers": [
+       {
+        "name": "report-generator",
+        "ready": true,
+        "restart_count": 0,
+        "image": "europe-west1-docker.pkg.dev/demo-project-123/apps/report-generator:stable",
+        "state": "running",
+        "waiting_reason": null,
+        "last_termination_reason": null,
+        "last_exit_code": null
+       }
+      ],
+      "limits": {
+       "report-generator": {
+        "cpu": "500m",
+        "memory": "512Mi"
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ "builds": []
+}

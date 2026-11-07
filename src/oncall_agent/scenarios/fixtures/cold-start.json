@@ -1,0 +1,261 @@
+{
+ "name": "cold-start",
+ "title": "pricing-api latency spikes and 429s",
+ "now": "2026-10-14T14:30:00Z",
+ "project_id": "demo-project-123",
+ "alert": {
+  "version": "1.2",
+  "incident": {
+   "incident_id": "0.mock-cold-001",
+   "t": -15,
+   "state": "open",
+   "policy_name": "pricing-api p99 latency above 2 s",
+   "condition_name": "pricing-api p99 latency above 2 s",
+   "summary": "pricing-api p99 latency above 2 s",
+   "url": "https://console.cloud.google.com/monitoring/alerting?project=demo-project-123",
+   "resource": {
+    "type": "cloud_run_revision",
+    "labels": {
+     "project_id": "demo-project-123",
+     "service_name": "pricing-api",
+     "location": "europe-west1"
+    }
+   },
+   "metric": {
+    "type": "run.googleapis.com/request_latencies",
+    "displayName": "request_latencies"
+   }
+  }
+ },
+ "logs": [
+  {
+   "t": -50,
+   "severity": "INFO",
+   "resource": {
+    "type": "cloud_run_revision",
+    "labels": {
+     "service_name": "pricing-api",
+     "revision_name": "pricing-api-00044-zxc"
+    }
+   },
+   "text": "Revision pricing-api-00044-zxc: min-instances changed 2 -> 0 (cost optimisation)"
+  },
+  {
+   "t": -21,
+   "severity": "WARNING",
+   "resource": {
+    "type": "cloud_run_revision",
+    "labels": {
+     "service_name": "pricing-api",
+     "revision_name": "pricing-api-00044-zxc"
+    }
+   },
+   "text": "The request was aborted because there was no available instance. Additional troubleshooting documentation can be found at https://cloud.google.com/run/docs/troubleshooting"
+  },
+  {
+   "t": -17,
+   "severity": "WARNING",
+   "resource": {
+    "type": "cloud_run_revision",
+    "labels": {
+     "service_name": "pricing-api",
+     "revision_name": "pricing-api-00044-zxc"
+    }
+   },
+   "text": "The request was aborted because there was no available instance. Additional troubleshooting documentation can be found at https://cloud.google.com/run/docs/troubleshooting"
+  },
+  {
+   "t": -14,
+   "severity": "WARNING",
+   "resource": {
+    "type": "cloud_run_revision",
+    "labels": {
+     "service_name": "pricing-api",
+     "revision_name": "pricing-api-00044-zxc"
+    }
+   },
+   "text": "The request was aborted because there was no available instance. Additional troubleshooting documentation can be found at https://cloud.google.com/run/docs/troubleshooting"
+  },
+  {
+   "t": -9,
+   "severity": "WARNING",
+   "resource": {
+    "type": "cloud_run_revision",
+    "labels": {
+     "service_name": "pricing-api",
+     "revision_name": "pricing-api-00044-zxc"
+    }
+   },
+   "text": "The request was aborted because there was no available instance. Additional troubleshooting documentation can be found at https://cloud.google.com/run/docs/troubleshooting"
+  },
+  {
+   "t": -6,
+   "severity": "WARNING",
+   "resource": {
+    "type": "cloud_run_revision",
+    "labels": {
+     "service_name": "pricing-api",
+     "revision_name": "pricing-api-00044-zxc"
+    }
+   },
+   "text": "The request was aborted because there was no available instance. Additional troubleshooting documentation can be found at https://cloud.google.com/run/docs/troubleshooting"
+  },
+  {
+   "t": -2,
+   "severity": "WARNING",
+   "resource": {
+    "type": "cloud_run_revision",
+    "labels": {
+     "service_name": "pricing-api",
+     "revision_name": "pricing-api-00044-zxc"
+    }
+   },
+   "text": "The request was aborted because there was no available instance. Additional troubleshooting documentation can be found at https://cloud.google.com/run/docs/troubleshooting"
+  },
+  {
+   "t": -20,
+   "severity": "INFO",
+   "resource": {
+    "type": "cloud_run_revision",
+    "labels": {
+     "service_name": "pricing-api",
+     "revision_name": "pricing-api-00044-zxc"
+    }
+   },
+   "text": "Starting new instance. Reason: AUTOSCALING - cold start took 9.8s"
+  },
+  {
+   "t": -12,
+   "severity": "INFO",
+   "resource": {
+    "type": "cloud_run_revision",
+    "labels": {
+     "service_name": "pricing-api",
+     "revision_name": "pricing-api-00044-zxc"
+    }
+   },
+   "text": "Starting new instance. Reason: AUTOSCALING - cold start took 9.8s"
+  },
+  {
+   "t": -5,
+   "severity": "INFO",
+   "resource": {
+    "type": "cloud_run_revision",
+    "labels": {
+     "service_name": "pricing-api",
+     "revision_name": "pricing-api-00044-zxc"
+    }
+   },
+   "text": "Starting new instance. Reason: AUTOSCALING - cold start took 9.8s"
+  }
+ ],
+ "metrics": {
+  "run_request_latency_p99": [
+   {
+    "labels": {
+     "service_name": "pricing-api"
+    },
+    "unit": "ms",
+    "points": [
+     [
+      -60,
+      180
+     ],
+     [
+      -45,
+      190
+     ],
+     [
+      -21,
+      9900
+     ],
+     [
+      -14,
+      10400
+     ],
+     [
+      -6,
+      9800
+     ],
+     [
+      0,
+      250
+     ]
+    ]
+   }
+  ],
+  "run_instance_count": [
+   {
+    "labels": {
+     "service_name": "pricing-api"
+    },
+    "unit": "1",
+    "points": [
+     [
+      -60,
+      2
+     ],
+     [
+      -48,
+      0
+     ],
+     [
+      -21,
+      1
+     ],
+     [
+      -14,
+      3
+     ],
+     [
+      -6,
+      1
+     ],
+     [
+      0,
+      0
+     ]
+    ]
+   }
+  ]
+ },
+ "cloud_run": {
+  "pricing-api": {
+   "region": "europe-west1",
+   "url": "https://pricing.example.com",
+   "revisions": [
+    {
+     "name": "pricing-api-00044-zxc",
+     "t": -50,
+     "image": "europe-west1-docker.pkg.dev/demo-project-123/apps/pricing:8d9e0f1",
+     "traffic_percent": 100,
+     "ready": true,
+     "config": {
+      "max_instances": 20,
+      "min_instances": 0,
+      "memory": "512Mi",
+      "env_names": [
+       "DATABASE_URL"
+      ]
+     }
+    },
+    {
+     "name": "pricing-api-00043-asd",
+     "t": -20000,
+     "image": "europe-west1-docker.pkg.dev/demo-project-123/apps/pricing:8d9e0f1",
+     "traffic_percent": 0,
+     "ready": true,
+     "config": {
+      "max_instances": 20,
+      "min_instances": 2,
+      "memory": "512Mi",
+      "env_names": [
+       "DATABASE_URL"
+      ]
+     }
+    }
+   ]
+  }
+ },
+ "builds": []
+}

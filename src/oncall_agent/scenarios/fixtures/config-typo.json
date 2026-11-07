@@ -1,0 +1,161 @@
+{
+ "name": "config-typo",
+ "title": "notifications deploy failing to become ready",
+ "now": "2026-10-14T14:30:00Z",
+ "project_id": "demo-project-123",
+ "alert": {
+  "version": "1.2",
+  "incident": {
+   "incident_id": "0.mock-config-001",
+   "t": -12,
+   "state": "open",
+   "policy_name": "notifications revision failed to become ready",
+   "condition_name": "notifications revision failed to become ready",
+   "summary": "notifications revision failed to become ready",
+   "url": "https://console.cloud.google.com/monitoring/alerting?project=demo-project-123",
+   "resource": {
+    "type": "cloud_run_revision",
+    "labels": {
+     "project_id": "demo-project-123",
+     "service_name": "notifications",
+     "location": "europe-west1"
+    }
+   },
+   "metric": {
+    "type": "logging.googleapis.com/user/revision_startup_failures",
+    "displayName": "revision_startup_failures"
+   }
+  }
+ },
+ "logs": [
+  {
+   "t": -14,
+   "severity": "ERROR",
+   "resource": {
+    "type": "cloud_run_revision",
+    "labels": {
+     "service_name": "notifications",
+     "revision_name": "notifications-00018-vfr"
+    }
+   },
+   "text": "KeyError: 'DATABASE_URL'"
+  },
+  {
+   "t": -14,
+   "severity": "ERROR",
+   "resource": {
+    "type": "cloud_run_revision",
+    "labels": {
+     "service_name": "notifications",
+     "revision_name": "notifications-00018-vfr"
+    }
+   },
+   "text": "Missing required environment variable DATABASE_URL; exiting with code 1"
+  },
+  {
+   "t": -13,
+   "severity": "ERROR",
+   "resource": {
+    "type": "cloud_run_revision",
+    "labels": {
+     "service_name": "notifications",
+     "revision_name": "notifications-00018-vfr"
+    }
+   },
+   "text": "Default STARTUP TCP probe failed 1 time consecutively for container on port 8080"
+  },
+  {
+   "t": -60,
+   "severity": "INFO",
+   "resource": {
+    "type": "cloud_run_revision",
+    "labels": {
+     "service_name": "notifications",
+     "revision_name": "notifications-00017-cde"
+    }
+   },
+   "text": "sent 120 push notifications"
+  }
+ ],
+ "metrics": {
+  "run_request_count_5xx": [
+   {
+    "labels": {
+     "service_name": "notifications"
+    },
+    "unit": "1/s",
+    "points": [
+     [
+      -60,
+      0
+     ],
+     [
+      -30,
+      0
+     ],
+     [
+      0,
+      0
+     ]
+    ]
+   }
+  ]
+ },
+ "cloud_run": {
+  "notifications": {
+   "region": "europe-west1",
+   "url": "https://notifications.example.com",
+   "revisions": [
+    {
+     "name": "notifications-00018-vfr",
+     "t": -15,
+     "image": "europe-west1-docker.pkg.dev/demo-project-123/apps/notifications:e0f1a2b",
+     "traffic_percent": 0,
+     "ready": false,
+     "config": {
+      "max_instances": 20,
+      "min_instances": 1,
+      "memory": "512Mi",
+      "env_names": [
+       "DATABSE_URL",
+       "FCM_PROJECT"
+      ]
+     },
+     "ready_message": "The user-provided container failed to start and listen on the port defined by the PORT=8080 environment variable."
+    },
+    {
+     "name": "notifications-00017-cde",
+     "t": -30000,
+     "image": "europe-west1-docker.pkg.dev/demo-project-123/apps/notifications:9a8b7c6",
+     "traffic_percent": 100,
+     "ready": true,
+     "config": {
+      "max_instances": 20,
+      "min_instances": 1,
+      "memory": "512Mi",
+      "env_names": [
+       "DATABASE_URL",
+       "FCM_PROJECT"
+      ]
+     }
+    }
+   ]
+  }
+ },
+ "builds": [
+  {
+   "id": "b-notif-e0f1a2b",
+   "t": -20,
+   "status": "SUCCESS",
+   "images": [
+    "europe-west1-docker.pkg.dev/demo-project-123/apps/notifications:e0f1a2b"
+   ],
+   "trigger_id": "notifications-main",
+   "substitutions": {
+    "BRANCH_NAME": "main",
+    "SHORT_SHA": "e0f1a2b"
+   },
+   "failure_detail": null
+  }
+ ]
+}

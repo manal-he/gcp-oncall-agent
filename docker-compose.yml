@@ -1,0 +1,38 @@
+# Local stack. Offline by default (simulated backend + mock LLM): `docker compose up --build`
+# UI + API: http://localhost:8080   MCP (streamable HTTP): http://localhost:8765/mcp
+# Traces:   `docker compose --profile observability up` then http://localhost:16686
+services:
+  api:
+    build: .
+    image: gcp-oncall-agent:local
+    ports: ["127.0.0.1:8080:8080"]
+    environment:
+      ONCALL_BACKEND: simulated
+      ONCALL_LLM_PROVIDER: ${ONCALL_LLM_PROVIDER:-mock}
+      ONCALL_CORS_ORIGINS: http://localhost:5173
+      # Uncomment with the observability profile:
+      # OTEL_EXPORTER_OTLP_ENDPOINT: http://jaeger:4318
+    env_file:
+      - path: .env
+        required: false
+    read_only: true
+    tmpfs: ["/tmp"]
+    security_opt: ["no-new-privileges:true"]
+
+  mcp:
+    image: gcp-oncall-agent:local
+    depends_on: [api]
+    command: ["oncall", "mcp", "--transport", "http", "--host", "0.0.0.0", "--port", "8765"]
+    ports: ["127.0.0.1:8765:8765"]
+    environment:
+      ONCALL_BACKEND: simulated
+      ONCALL_SCENARIO: ${ONCALL_SCENARIO:-bad-deploy}
+    read_only: true
+    security_opt: ["no-new-privileges:true"]
+
+  jaeger:
+    profiles: ["observability"]
+    image: jaegertracing/all-in-one:1.62.0
+    ports: ["127.0.0.1:16686:16686"]
+    environment:
+      COLLECTOR_OTLP_ENABLED: "true"

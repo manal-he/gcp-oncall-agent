@@ -1,0 +1,238 @@
+{
+ "name": "image-pull-failure",
+ "title": "web-frontend rollout stuck",
+ "now": "2026-10-14T14:30:00Z",
+ "project_id": "demo-project-123",
+ "alert": {
+  "version": "1.2",
+  "incident": {
+   "incident_id": "0.mock-pull-001",
+   "t": -10,
+   "state": "open",
+   "policy_name": "web-frontend unavailable replicas above 0 for 5m",
+   "condition_name": "web-frontend unavailable replicas above 0 for 5m",
+   "summary": "web-frontend unavailable replicas above 0 for 5m",
+   "url": "https://console.cloud.google.com/monitoring/alerting?project=demo-project-123",
+   "resource": {
+    "type": "k8s_container",
+    "labels": {
+     "project_id": "demo-project-123",
+     "cluster_name": "prod-gke",
+     "location": "europe-west1",
+     "namespace_name": "web",
+     "container_name": "web-frontend"
+    }
+   },
+   "metric": {
+    "type": "kubernetes.io/container/restart_count",
+    "displayName": "restart_count"
+   }
+  }
+ },
+ "logs": [
+  {
+   "t": -14,
+   "severity": "WARNING",
+   "resource": {
+    "type": "k8s_container",
+    "labels": {
+     "cluster_name": "prod-gke",
+     "namespace_name": "web",
+     "container_name": "web-frontend",
+     "app": "web-frontend",
+     "pod_name": "web-frontend-6f7a-ppppp"
+    }
+   },
+   "text": "Failed to pull image \"europe-west1-docker.pkg.dev/demo-project-123/apps/web-frontend:3e9a1c7\": rpc error: code = NotFound desc = manifest unknown"
+  },
+  {
+   "t": -12,
+   "severity": "WARNING",
+   "resource": {
+    "type": "k8s_container",
+    "labels": {
+     "cluster_name": "prod-gke",
+     "namespace_name": "web",
+     "container_name": "web-frontend",
+     "app": "web-frontend",
+     "pod_name": "web-frontend-6f7a-ppppp"
+    }
+   },
+   "text": "Error: ImagePullBackOff"
+  },
+  {
+   "t": -8,
+   "severity": "WARNING",
+   "resource": {
+    "type": "k8s_container",
+    "labels": {
+     "cluster_name": "prod-gke",
+     "namespace_name": "web",
+     "container_name": "web-frontend",
+     "app": "web-frontend",
+     "pod_name": "web-frontend-6f7a-qqqqq"
+    }
+   },
+   "text": "Error: ErrImagePull"
+  },
+  {
+   "t": -60,
+   "severity": "INFO",
+   "resource": {
+    "type": "k8s_container",
+    "labels": {
+     "cluster_name": "prod-gke",
+     "namespace_name": "web",
+     "container_name": "web-frontend",
+     "app": "web-frontend",
+     "pod_name": "web-frontend-5e6d-rrrrr"
+    }
+   },
+   "text": "GET / 200 12ms"
+  }
+ ],
+ "metrics": {
+  "gke_container_restart_count": [
+   {
+    "labels": {
+     "container_name": "web-frontend"
+    },
+    "unit": "1",
+    "points": [
+     [
+      -60,
+      0
+     ],
+     [
+      0,
+      0
+     ]
+    ]
+   }
+  ]
+ },
+ "gke": {
+  "clusters": [
+   {
+    "name": "prod-gke",
+    "location": "europe-west1",
+    "pods": [
+     {
+      "name": "web-frontend-6f7a-ppppp",
+      "namespace": "web",
+      "phase": "Pending",
+      "node": "gke-prod-pool-1-node-b",
+      "labels": {
+       "app": "web-frontend"
+      },
+      "t": -15,
+      "containers": [
+       {
+        "name": "web-frontend",
+        "ready": false,
+        "restart_count": 0,
+        "image": "europe-west1-docker.pkg.dev/demo-project-123/apps/web-frontend:3e9a1c7",
+        "state": "waiting",
+        "waiting_reason": "ImagePullBackOff",
+        "last_termination_reason": null,
+        "last_exit_code": null
+       }
+      ],
+      "limits": {
+       "web-frontend": {
+        "cpu": "500m",
+        "memory": "512Mi"
+       }
+      }
+     },
+     {
+      "name": "web-frontend-6f7a-qqqqq",
+      "namespace": "web",
+      "phase": "Pending",
+      "node": "gke-prod-pool-1-node-c",
+      "labels": {
+       "app": "web-frontend"
+      },
+      "t": -9,
+      "containers": [
+       {
+        "name": "web-frontend",
+        "ready": false,
+        "restart_count": 0,
+        "image": "europe-west1-docker.pkg.dev/demo-project-123/apps/web-frontend:3e9a1c7",
+        "state": "waiting",
+        "waiting_reason": "ErrImagePull",
+        "last_termination_reason": null,
+        "last_exit_code": null
+       }
+      ],
+      "limits": {
+       "web-frontend": {
+        "cpu": "500m",
+        "memory": "512Mi"
+       }
+      }
+     },
+     {
+      "name": "web-frontend-5e6d-rrrrr",
+      "namespace": "web",
+      "phase": "Running",
+      "node": "gke-prod-pool-1-node-a",
+      "labels": {
+       "app": "web-frontend"
+      },
+      "t": -9000,
+      "containers": [
+       {
+        "name": "web-frontend",
+        "ready": true,
+        "restart_count": 0,
+        "image": "europe-west1-docker.pkg.dev/demo-project-123/apps/web-frontend:b4c5d6e",
+        "state": "running",
+        "waiting_reason": null,
+        "last_termination_reason": null,
+        "last_exit_code": null
+       }
+      ],
+      "limits": {
+       "web-frontend": {
+        "cpu": "500m",
+        "memory": "512Mi"
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ "builds": [
+  {
+   "id": "b-web-3e9a1c7",
+   "t": -22,
+   "status": "FAILURE",
+   "images": [
+    "europe-west1-docker.pkg.dev/demo-project-123/apps/web-frontend:3e9a1c7"
+   ],
+   "trigger_id": "web-frontend-main",
+   "substitutions": {
+    "BRANCH_NAME": "main",
+    "SHORT_SHA": "3e9a1c7"
+   },
+   "failure_detail": "Build step 2 \"npm run build\" failed: exit status 1"
+  },
+  {
+   "id": "b-web-b4c5d6e",
+   "t": -9100,
+   "status": "SUCCESS",
+   "images": [
+    "europe-west1-docker.pkg.dev/demo-project-123/apps/web-frontend:b4c5d6e"
+   ],
+   "trigger_id": "web-frontend-main",
+   "substitutions": {
+    "BRANCH_NAME": "main",
+    "SHORT_SHA": "b4c5d6e"
+   },
+   "failure_detail": null
+  }
+ ]
+}

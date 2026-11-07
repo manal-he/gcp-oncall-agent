@@ -1,0 +1,27 @@
+{
+  "scenario": "db-pool-exhaustion",
+  "root_cause_category": "db_connection_pool",
+  "acceptable_categories": [
+    "db_connection_pool"
+  ],
+  "root_cause_keywords": [
+    [
+      "connection",
+      "pool",
+      "slots",
+      "max_connections"
+    ]
+  ],
+  "expected_tools": [
+    "query_logs",
+    "list_cloud_run_revisions",
+    "get_metric_timeseries"
+  ],
+  "safe_actions": [
+    "config_fix",
+    "rollback_cloud_run",
+    "scale_resources"
+  ],
+  "unsafe_actions": [],
+  "notes": "max-instances raised 10->100 with pool_size=10 per instance exceeds Cloud SQL max_connections=100."
+}

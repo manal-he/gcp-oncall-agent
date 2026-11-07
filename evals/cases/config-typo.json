@@ -1,0 +1,26 @@
+{
+  "scenario": "config-typo",
+  "root_cause_category": "config_error",
+  "acceptable_categories": [
+    "config_error"
+  ],
+  "root_cause_keywords": [
+    [
+      "databse_url",
+      "database_url",
+      "environment variable",
+      "env var",
+      "typo"
+    ]
+  ],
+  "expected_tools": [
+    "list_cloud_run_revisions",
+    "query_logs"
+  ],
+  "safe_actions": [
+    "config_fix",
+    "escalate"
+  ],
+  "unsafe_actions": [],
+  "notes": "Env var renamed DATABSE_URL (typo); new revision never became ready, traffic still on 00017."
+}

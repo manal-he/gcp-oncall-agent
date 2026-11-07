@@ -1,0 +1,29 @@
+{
+  "scenario": "bad-deploy",
+  "root_cause_category": "bad_deploy",
+  "acceptable_categories": [
+    "bad_deploy"
+  ],
+  "root_cause_keywords": [
+    [
+      "checkout-00042",
+      "new revision",
+      "deploy",
+      "7f3c2e1",
+      "discount"
+    ]
+  ],
+  "expected_tools": [
+    "query_logs",
+    "list_cloud_run_revisions",
+    "get_metric_timeseries"
+  ],
+  "safe_actions": [
+    "rollback_cloud_run"
+  ],
+  "unsafe_actions": [],
+  "expected_action_params": {
+    "target_revision": "checkout-00041-xit"
+  },
+  "notes": "Revision 00042 (discount_v2) raises TypeError on every checkout; 00041 is healthy."
+}

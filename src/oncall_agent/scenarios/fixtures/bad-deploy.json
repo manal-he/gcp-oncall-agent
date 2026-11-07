@@ -1,0 +1,58 @@
+{
+  "name": "bad-deploy",
+  "title": "Checkout 5xx spike after a new Cloud Run revision",
+  "now": "2026-10-14T14:30:00Z",
+  "project_id": "demo-project-123",
+  "alert": {
+    "version": "1.2",
+    "incident": {
+      "incident_id": "0.mock-bad-deploy-001",
+      "t": -18,
+      "state": "open",
+      "policy_name": "checkout 5xx rate above 1 req/s",
+      "condition_name": "Cloud Run 5xx request rate",
+      "summary": "5xx request rate for checkout is above threshold (12.3 req/s > 1 req/s).",
+      "url": "https://console.cloud.google.com/monitoring/alerting?project=demo-project-123",
+      "resource": {
+        "type": "cloud_run_revision",
+        "labels": {"project_id": "demo-project-123", "service_name": "checkout", "location": "europe-west1"}
+      },
+      "metric": {"type": "run.googleapis.com/request_count", "displayName": "Request count"}
+    }
+  },
+  "logs": [
+    {"t": -95, "severity": "INFO", "resource": {"type": "cloud_run_revision", "labels": {"service_name": "checkout", "revision_name": "checkout-00041-xit"}}, "text": "POST /api/checkout 200 182ms"},
+    {"t": -70, "severity": "WARNING", "resource": {"type": "cloud_run_revision", "labels": {"service_name": "checkout", "revision_name": "checkout-00041-xit"}}, "text": "slow downstream call to inventory: 1.2s"},
+    {"t": -26, "severity": "INFO", "resource": {"type": "cloud_run_revision", "labels": {"service_name": "checkout", "revision_name": "checkout-00042-bok"}}, "text": "Starting checkout service build 7f3c2e1 (feature flag discount_v2=on)"},
+    {"t": -22, "severity": "ERROR", "resource": {"type": "cloud_run_revision", "labels": {"service_name": "checkout", "revision_name": "checkout-00042-bok"}}, "text": "Traceback (most recent call last): File \"/app/checkout/pricing.py\", line 88, in apply_discount: TypeError: 'NoneType' object is not subscriptable"},
+    {"t": -21, "severity": "ERROR", "resource": {"type": "cloud_run_revision", "labels": {"service_name": "checkout", "revision_name": "checkout-00042-bok"}}, "text": "POST /api/checkout 500 41ms"},
+    {"t": -19, "severity": "ERROR", "resource": {"type": "cloud_run_revision", "labels": {"service_name": "checkout", "revision_name": "checkout-00042-bok"}}, "text": "Traceback (most recent call last): File \"/app/checkout/pricing.py\", line 88, in apply_discount: TypeError: 'NoneType' object is not subscriptable"},
+    {"t": -15, "severity": "ERROR", "resource": {"type": "cloud_run_revision", "labels": {"service_name": "checkout", "revision_name": "checkout-00042-bok"}}, "text": "POST /api/checkout 500 38ms"},
+    {"t": -11, "severity": "ERROR", "resource": {"type": "cloud_run_revision", "labels": {"service_name": "checkout", "revision_name": "checkout-00042-bok"}}, "text": "Traceback (most recent call last): File \"/app/checkout/pricing.py\", line 88, in apply_discount: TypeError: 'NoneType' object is not subscriptable"},
+    {"t": -6, "severity": "ERROR", "resource": {"type": "cloud_run_revision", "labels": {"service_name": "checkout", "revision_name": "checkout-00042-bok"}}, "text": "POST /api/checkout 500 44ms"},
+    {"t": -3, "severity": "WARNING", "resource": {"type": "cloud_run_revision", "labels": {"service_name": "checkout", "revision_name": "checkout-00042-bok"}}, "text": "discount_v2: coupon lookup returned no result for code WINTER26"}
+  ],
+  "metrics": {
+    "run_request_count_5xx": [
+      {"labels": {"service_name": "checkout"}, "unit": "1/s", "points": [[-60, 0.0], [-50, 0.02], [-40, 0.0], [-30, 0.01], [-25, 0.0], [-22, 6.8], [-18, 12.3], [-12, 11.9], [-6, 12.6], [0, 12.1]]}
+    ],
+    "run_request_latency_p99": [
+      {"labels": {"service_name": "checkout"}, "unit": "ms", "points": [[-60, 310], [-40, 305], [-25, 320], [-18, 95], [-6, 90], [0, 92]]}
+    ]
+  },
+  "cloud_run": {
+    "checkout": {
+      "region": "europe-west1",
+      "url": "https://checkout.example.com",
+      "revisions": [
+        {"name": "checkout-00042-bok", "t": -26, "image": "europe-west1-docker.pkg.dev/demo-project-123/apps/checkout:7f3c2e1", "traffic_percent": 100, "ready": true, "config": {"max_instances": 20, "min_instances": 1, "memory": "512Mi", "env_names": ["DATABASE_URL", "DISCOUNT_V2", "INVENTORY_URL"]}},
+        {"name": "checkout-00041-xit", "t": -2880, "image": "europe-west1-docker.pkg.dev/demo-project-123/apps/checkout:a19d4b0", "traffic_percent": 0, "ready": true, "config": {"max_instances": 20, "min_instances": 1, "memory": "512Mi", "env_names": ["DATABASE_URL", "INVENTORY_URL"]}},
+        {"name": "checkout-00040-wab", "t": -10080, "image": "europe-west1-docker.pkg.dev/demo-project-123/apps/checkout:5c0e9f2", "traffic_percent": 0, "ready": true, "config": {"max_instances": 20, "min_instances": 1, "memory": "512Mi", "env_names": ["DATABASE_URL", "INVENTORY_URL"]}}
+      ]
+    }
+  },
+  "builds": [
+    {"id": "b-7f3c2e1", "t": -34, "status": "SUCCESS", "images": ["europe-west1-docker.pkg.dev/demo-project-123/apps/checkout:7f3c2e1"], "trigger_id": "checkout-main", "substitutions": {"BRANCH_NAME": "main", "SHORT_SHA": "7f3c2e1"}, "failure_detail": null},
+    {"id": "b-a19d4b0", "t": -2900, "status": "SUCCESS", "images": ["europe-west1-docker.pkg.dev/demo-project-123/apps/checkout:a19d4b0"], "trigger_id": "checkout-main", "substitutions": {"BRANCH_NAME": "main", "SHORT_SHA": "a19d4b0"}, "failure_detail": null}
+  ]
+}

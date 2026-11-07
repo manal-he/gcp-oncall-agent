@@ -1,0 +1,242 @@
+{
+ "name": "dependency-outage",
+ "title": "catalog errors right after a deploy",
+ "now": "2026-10-14T14:30:00Z",
+ "project_id": "demo-project-123",
+ "alert": {
+  "version": "1.2",
+  "incident": {
+   "incident_id": "0.mock-dep-001",
+   "t": -8,
+   "state": "open",
+   "policy_name": "catalog 5xx rate above 1 req/s",
+   "condition_name": "catalog 5xx rate above 1 req/s",
+   "summary": "catalog 5xx rate above 1 req/s",
+   "url": "https://console.cloud.google.com/monitoring/alerting?project=demo-project-123",
+   "resource": {
+    "type": "cloud_run_revision",
+    "labels": {
+     "project_id": "demo-project-123",
+     "service_name": "catalog",
+     "location": "europe-west1"
+    }
+   },
+   "metric": {
+    "type": "run.googleapis.com/request_count",
+    "displayName": "request_count"
+   }
+  }
+ },
+ "logs": [
+  {
+   "t": -31,
+   "severity": "ERROR",
+   "resource": {
+    "type": "cloud_run_revision",
+    "labels": {
+     "service_name": "catalog",
+     "revision_name": "catalog-00030-jkl"
+    }
+   },
+   "text": "upstream pricing.partner.example.com returned 503 Service Unavailable (GET /v2/prices)"
+  },
+  {
+   "t": -28,
+   "severity": "ERROR",
+   "resource": {
+    "type": "cloud_run_revision",
+    "labels": {
+     "service_name": "catalog",
+     "revision_name": "catalog-00030-jkl"
+    }
+   },
+   "text": "upstream pricing.partner.example.com returned 503 Service Unavailable (GET /v2/prices)"
+  },
+  {
+   "t": -24,
+   "severity": "ERROR",
+   "resource": {
+    "type": "cloud_run_revision",
+    "labels": {
+     "service_name": "catalog",
+     "revision_name": "catalog-00030-jkl"
+    }
+   },
+   "text": "upstream pricing.partner.example.com returned 503 Service Unavailable (GET /v2/prices)"
+  },
+  {
+   "t": -19,
+   "severity": "ERROR",
+   "resource": {
+    "type": "cloud_run_revision",
+    "labels": {
+     "service_name": "catalog",
+     "revision_name": "catalog-00030-jkl"
+    }
+   },
+   "text": "upstream pricing.partner.example.com returned 503 Service Unavailable (GET /v2/prices)"
+  },
+  {
+   "t": -15,
+   "severity": "ERROR",
+   "resource": {
+    "type": "cloud_run_revision",
+    "labels": {
+     "service_name": "catalog",
+     "revision_name": "catalog-00030-jkl"
+    }
+   },
+   "text": "upstream pricing.partner.example.com returned 503 Service Unavailable (GET /v2/prices)"
+  },
+  {
+   "t": -10,
+   "severity": "ERROR",
+   "resource": {
+    "type": "cloud_run_revision",
+    "labels": {
+     "service_name": "catalog",
+     "revision_name": "catalog-00031-mnb"
+    }
+   },
+   "text": "upstream pricing.partner.example.com returned 503 Service Unavailable (GET /v2/prices)"
+  },
+  {
+   "t": -7,
+   "severity": "ERROR",
+   "resource": {
+    "type": "cloud_run_revision",
+    "labels": {
+     "service_name": "catalog",
+     "revision_name": "catalog-00031-mnb"
+    }
+   },
+   "text": "upstream pricing.partner.example.com returned 503 Service Unavailable (GET /v2/prices)"
+  },
+  {
+   "t": -3,
+   "severity": "ERROR",
+   "resource": {
+    "type": "cloud_run_revision",
+    "labels": {
+     "service_name": "catalog",
+     "revision_name": "catalog-00031-mnb"
+    }
+   },
+   "text": "upstream pricing.partner.example.com returned 503 Service Unavailable (GET /v2/prices)"
+  },
+  {
+   "t": -9,
+   "severity": "WARNING",
+   "resource": {
+    "type": "cloud_run_revision",
+    "labels": {
+     "service_name": "catalog",
+     "revision_name": "catalog-00031-mnb"
+    }
+   },
+   "text": "circuit breaker open for pricing-partner; serving stale prices"
+  },
+  {
+   "t": -12,
+   "severity": "INFO",
+   "resource": {
+    "type": "cloud_run_revision",
+    "labels": {
+     "service_name": "catalog",
+     "revision_name": "catalog-00031-mnb"
+    }
+   },
+   "text": "Starting catalog 2.14.0 (copy changes on product page)"
+  }
+ ],
+ "metrics": {
+  "run_request_count_5xx": [
+   {
+    "labels": {
+     "service_name": "catalog"
+    },
+    "unit": "1/s",
+    "points": [
+     [
+      -60,
+      0
+     ],
+     [
+      -32,
+      0.1
+     ],
+     [
+      -30,
+      1.4
+     ],
+     [
+      -20,
+      1.9
+     ],
+     [
+      -10,
+      2.1
+     ],
+     [
+      0,
+      2.0
+     ]
+    ]
+   }
+  ]
+ },
+ "cloud_run": {
+  "catalog": {
+   "region": "europe-west1",
+   "url": "https://catalog.example.com",
+   "revisions": [
+    {
+     "name": "catalog-00031-mnb",
+     "t": -12,
+     "image": "europe-west1-docker.pkg.dev/demo-project-123/apps/catalog:3c4d5e6",
+     "traffic_percent": 100,
+     "ready": true,
+     "config": {
+      "max_instances": 20,
+      "min_instances": 1,
+      "memory": "512Mi",
+      "env_names": [
+       "DATABASE_URL"
+      ]
+     }
+    },
+    {
+     "name": "catalog-00030-jkl",
+     "t": -6000,
+     "image": "europe-west1-docker.pkg.dev/demo-project-123/apps/catalog:f9e8d7c",
+     "traffic_percent": 0,
+     "ready": true,
+     "config": {
+      "max_instances": 20,
+      "min_instances": 1,
+      "memory": "512Mi",
+      "env_names": [
+       "DATABASE_URL"
+      ]
+     }
+    }
+   ]
+  }
+ },
+ "builds": [
+  {
+   "id": "b-cat-3c4d5e6",
+   "t": -20,
+   "status": "SUCCESS",
+   "images": [
+    "europe-west1-docker.pkg.dev/demo-project-123/apps/catalog:3c4d5e6"
+   ],
+   "trigger_id": "catalog-main",
+   "substitutions": {
+    "BRANCH_NAME": "main",
+    "SHORT_SHA": "3c4d5e6"
+   },
+   "failure_detail": null
+  }
+ ]
+}
